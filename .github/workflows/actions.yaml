@@ -28,6 +28,7 @@ jobs:
 
     - name: Terraform Init
       run: |
+        cd RootLoginAlert/
         terraform init
 
     - name: Terraform plan
