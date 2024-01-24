@@ -1,0 +1,37 @@
+name: Terraform
+
+on:
+  push:
+    branches: 
+    - main 
+
+jobs:
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: AKIAQ7BGSMBGIO4A7GSQ
+        aws-secret-access-key: 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
+        aws-region: us-east-1
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.4.6
+
+    - name: Terraform Init
+      run: |
+        terraform init
+
+    - name: Terraform plan
+      run: terraform plan
+    
+    - name: Terraform apply
+      run: terraform apply -auto-approve -input=false
