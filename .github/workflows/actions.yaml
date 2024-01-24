@@ -31,7 +31,7 @@ jobs:
         cd RootLoginAlert/
         terraform init
         terraform plan
-        terraform apply -auto-approve -input=false
+        terraform destroy -auto-approve
 
     # - name: Terraform plan
     #   run: terraform plan
